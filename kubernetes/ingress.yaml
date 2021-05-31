@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: estimationworkflow-ingress
+  namespace: estimationworkflow
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: test.lca.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: test-backend-service
+              servicePort: 80
+

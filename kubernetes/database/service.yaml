@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: test
+    component: database
+  name: test-database-service
+  namespace: test-namespace
+spec:
+  ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    app: test
+    component: database
+  type: ClusterIP

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-backend-deployment
+  namespace: test-namespace
+  labels:
+    app: test
+    component: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+      component: backend
+  template:
+    metadata:
+      labels:
+        app: test
+        component: backend
+    spec:
+      containers:
+        - name: test-backend
+          image: registry.lca.com/test-backend
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: scopic-software

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-database-deployment
+  namespace: test-namespace
+  labels:
+    app: test
+    component: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+      component: database
+  template:
+    metadata:
+      labels:
+        app: test
+        component: database
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: test-database-data-claim
+      containers:
+        - name: test-database
+          image: mariadb
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "1234"
+          volumeMounts:
+            - name: data
+              mountPath: "/var/lib/mysql"

@@ -1,0 +1,6 @@
+resources:
+    - ingress.yaml
+    - server/deployment.yaml
+    - server/service.yaml
+    - database/deployment.yaml
+    - database/service.yaml
