@@ -10,9 +10,9 @@ pipeline {
 		stage("Build and push docker image") {
 			steps {
 				script {
-					docker.build IMAGE
+					REMOTE_IMAGE = docker.build IMAGE
           docker.withRegistry(REGISTRY, REGISTRY_CREDENTIALS) {
-            IMAGE.push()
+            REMOTE_IMAGE.push()
           }
 				}
 			}
