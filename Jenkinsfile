@@ -2,7 +2,8 @@ pipeline {
   agent any
 	environment {
 		IMAGE = "registry.lca.com/test-backend"
-		REGISTRY_CREDENTIALS = 'lca-local-registry-credentials'
+    REGISTRY = "registry.lca.com"
+		REGISTRY_CREDENTIALS = "lca-local-registry-credentials"
 	}
 
 	stages {
@@ -10,7 +11,7 @@ pipeline {
 			steps {
 				script {
 					docker.build IMAGE
-          docker.withRegistry('', REGISTRY_CREDENTIALS) {
+          docker.withRegistry(REGISTRY, REGISTRY_CREDENTIALS) {
             IMAGE.push()
           }
 				}
