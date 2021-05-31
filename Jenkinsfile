@@ -2,7 +2,7 @@ pipeline {
   agent any
 	environment {
 		IMAGE = "registry.lca.com/test-backend"
-		REGISTRY_CREDENTIALS = credentials("lca-local-registry-credentials")
+		REGISTRY_CREDENTIALS = `lca-local-registry-credentials`
 	}
 
 	stages {
