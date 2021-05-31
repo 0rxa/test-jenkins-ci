@@ -2,7 +2,7 @@ pipeline {
   agent any
 	environment {
 		IMAGE = "registry.lca.com/test-backend"
-    REGISTRY = "registry.lca.com"
+    REGISTRY = "https://registry.lca.com"
 		REGISTRY_CREDENTIALS = "lca-local-registry-credentials"
 	}
 
