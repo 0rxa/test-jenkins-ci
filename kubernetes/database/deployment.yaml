@@ -22,6 +22,9 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: test-database-data-claim
+        - name: config
+          configMap:
+            name: test-database-deployment-config
       containers:
         - name: test-database
           image: mariadb
@@ -33,3 +36,8 @@ spec:
           volumeMounts:
             - name: data
               mountPath: "/var/lib/mysql"
+            - name: config
+              mountPath: "/etc/mysql/mariadb.conf.d/50-server.cnf"
+                items:
+                  - key: config
+                    path: "50-server.cnf"
