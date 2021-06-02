@@ -1,5 +1,6 @@
 resources:
     - ingress.yaml
+    - namepsace.yaml
     - server/deployment.yaml
     - server/service.yaml
     - database/deployment.yaml
